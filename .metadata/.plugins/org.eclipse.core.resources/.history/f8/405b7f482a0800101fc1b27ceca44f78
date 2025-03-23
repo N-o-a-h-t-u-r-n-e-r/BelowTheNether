@@ -67,12 +67,12 @@ public class Main
             .alwaysEdible().nutrition(1).saturationModifier(200f).build(), Consumables.defaultFood().onConsume(new ApplyStatusEffectsConsumeEffect(
                 List.of(
                     new MobEffectInstance(MobEffects.HEALTH_BOOST, 3600*tick, 5),
-                    new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 3600*tick, 10), 
+                    new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 3600*tick, 10),
                     new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 3600*tick, 10),
                     new MobEffectInstance(MobEffects.REGENERATION, 3600*tick, 10)
                 )
             )
-        )  
+        )
         .build()));
 
     // Creates a creative tab with the id "examplemod:example_tab" for the example item, that is placed after the combat tab
