@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "belowthenether:item/forbidden_fruit"
+  }
+}
