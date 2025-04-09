@@ -2,4 +2,5 @@
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="net.minecraft.world.item.component.Consumable"/>
     <fullyQualifiedTypeName name="net.minecraft.world.item.component.Consumables"/>
+    <fullyQualifiedTypeName name="net.minecraft.world.level.block.SoundType"/>
 </qualifiedTypeNameHistroy>

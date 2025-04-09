@@ -23,6 +23,7 @@ import net.minecraft.world.item.component.Consumables;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.api.distmarker.Dist;
@@ -59,16 +60,16 @@ public class Main
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
 
     //BLOCKS
-    public static final DeferredBlock<Block> EXAMPLE_BLOCK = BLOCKS.registerSimpleBlock("necro_portal", BlockBehaviour.Properties.of().mapColor(MapColor.STONE));
+    public static final DeferredBlock<Block> PURE_OBSIDIAN_BLOCK = BLOCKS.registerSimpleBlock("pure_obsidian", BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).sound(SoundType.STONE));
     
     //BLOCK_ITEMS
-    public static final DeferredItem<BlockItem> EXAMPLE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("example_block", EXAMPLE_BLOCK);
+    public static final DeferredItem<BlockItem> PURE_OBSIDIAN_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("pure_obsidian", PURE_OBSIDIAN_BLOCK);
 
     
     //ITEMS
     public static final DeferredItem<Item> TIME_GYRO = ITEMS.registerItem("time_gyro", TimeGyro::new);
     
-    public static final DeferredItem<Item> EXAMPLE_ITEM = ITEMS.registerSimpleItem("forbidden_fruit", new Item.Properties().food(new FoodProperties.Builder()
+    public static final DeferredItem<Item> FORBIDDEN_FRUIT = ITEMS.registerSimpleItem("forbidden_fruit", new Item.Properties().food(new FoodProperties.Builder()
             .alwaysEdible().nutrition(1).saturationModifier(200f).build(), Consumables.defaultFood().onConsume(new ApplyStatusEffectsConsumeEffect(
                 List.of(
                     new MobEffectInstance(MobEffects.HEALTH_BOOST, 3600*tick, 5),
@@ -84,9 +85,9 @@ public class Main
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("example_tab", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.belowthenether")) //The language key for the title of your CreativeModeTab
             .withTabsBefore(CreativeModeTabs.COMBAT)
-            .icon(() -> EXAMPLE_ITEM.get().getDefaultInstance())
+            .icon(() -> FORBIDDEN_FRUIT.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
-                output.accept(EXAMPLE_ITEM.get()); // Add the example item to the tab. For your own tabs, this method is preferred over the event
+                output.accept(FORBIDDEN_FRUIT.get()); // Add the example item to the tab. For your own tabs, this method is preferred over the event
             }).build());
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
@@ -132,7 +133,7 @@ public class Main
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
         if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS)
-            event.accept(EXAMPLE_BLOCK_ITEM);
+            event.accept(PURE_OBSIDIAN_BLOCK_ITEM);
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call

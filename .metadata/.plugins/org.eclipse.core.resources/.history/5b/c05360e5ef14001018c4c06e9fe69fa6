@@ -1,0 +1,6 @@
+{
+  "parent": "belowthenether:block/pure_obsidian",
+  "textures": {
+    "layer0": "belowthenether:block/pure_obsidian"
+  }
+}

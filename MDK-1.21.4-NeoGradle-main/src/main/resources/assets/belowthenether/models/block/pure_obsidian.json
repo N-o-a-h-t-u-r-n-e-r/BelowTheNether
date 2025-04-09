@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "belowthenether:block/pure_obsidian"
+  }
+}
