@@ -5,6 +5,8 @@ import java.util.List;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
+import com.noah.belowthenether.blocks.HellfireBlock;
+import com.noah.belowthenether.items.NetherStarStriker;
 import com.noah.belowthenether.items.TimeGyro;
 
 import net.minecraft.client.Minecraft;
@@ -18,7 +20,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.component.Consumable;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.Consumables;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 import net.minecraft.world.level.block.Block;
@@ -61,13 +63,16 @@ public class Main
 
     //BLOCKS
     public static final DeferredBlock<Block> PURE_OBSIDIAN_BLOCK = BLOCKS.registerSimpleBlock("pure_obsidian", BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).sound(SoundType.STONE));
+    public static final DeferredBlock<Block> HELLFIRE_BLOCK = BLOCKS.registerBlock("hellfire_block", HellfireBlock::new, BlockBehaviour.Properties.of().noCollission().mapColor(MapColor.FIRE).instabreak().sound(SoundType.WOOL).replaceable().lightLevel(state -> 15));
     
     //BLOCK_ITEMS
     public static final DeferredItem<BlockItem> PURE_OBSIDIAN_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("pure_obsidian", PURE_OBSIDIAN_BLOCK);
+    
 
     
     //ITEMS
     public static final DeferredItem<Item> TIME_GYRO = ITEMS.registerItem("time_gyro", TimeGyro::new);
+    public static final DeferredItem<Item> NETHER_STAR_STRIKER = ITEMS.registerItem("nether_star_striker", NetherStarStriker::new, new Item.Properties().durability(8).fireResistant().stacksTo(1));
     
     public static final DeferredItem<Item> FORBIDDEN_FRUIT = ITEMS.registerSimpleItem("forbidden_fruit", new Item.Properties().food(new FoodProperties.Builder()
             .alwaysEdible().nutrition(1).saturationModifier(200f).build(), Consumables.defaultFood().onConsume(new ApplyStatusEffectsConsumeEffect(
@@ -85,9 +90,11 @@ public class Main
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("example_tab", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.belowthenether")) //The language key for the title of your CreativeModeTab
             .withTabsBefore(CreativeModeTabs.COMBAT)
-            .icon(() -> FORBIDDEN_FRUIT.get().getDefaultInstance())
+            .icon(() -> NETHER_STAR_STRIKER.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
-                output.accept(FORBIDDEN_FRUIT.get()); // Add the example item to the tab. For your own tabs, this method is preferred over the event
+                output.acceptAll(List.of(new ItemStack(FORBIDDEN_FRUIT.get()),
+                						 new ItemStack(NETHER_STAR_STRIKER.get()),
+                						 new ItemStack(TIME_GYRO.get()))); // Add the example item to the tab. For your own tabs, this method is preferred over the event
             }).build());
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.

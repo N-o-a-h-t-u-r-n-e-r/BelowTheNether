@@ -1,12 +1,13 @@
 package com.noah.belowthenether.items;
 
+import java.util.Random;
 
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -22,7 +23,7 @@ public class TimeGyro extends Item {
 
 	}
 
-	//Method for when looking at block
+	// Method for when looking at block
 	@Override
 	public InteractionResult useOn(UseOnContext context) {
 		Player player = context.getPlayer();
@@ -43,7 +44,7 @@ public class TimeGyro extends Item {
 		return 80;
 	}
 
-	//Method for when not looking at block
+	// Method for when not looking at block
 	@Override
 	public InteractionResult use(Level level, Player player, InteractionHand hand) {
 		player.startUsingItem(hand);
@@ -57,18 +58,23 @@ public class TimeGyro extends Item {
 
 			Vec3 eyePos = player.getEyePosition();
 			Vec3 lookVec = player.getLookAngle();
-			Vec3 targetPos = eyePos.add(lookVec.scale(12));
+			Vec3 targetPos = eyePos.add(lookVec.scale(8));
 
 			if (level instanceof ServerLevel serverLevel) {
 				for (Entity mob : serverLevel.getAllEntities()) {
-					Vec3 mobPos = mob.position();
-					Vec3 direction = targetPos.subtract(mobPos).normalize();
-					double speed = 2.0f;
-					mob.setDeltaMovement(direction.scale(speed));
-					mob.setPose(Pose.FALL_FLYING);
+					if (mob instanceof LivingEntity) {
+						Vec3 mobPos = mob.position();
+						Vec3 direction = targetPos.subtract(mobPos).normalize();
+						double speed = 2.0f;
+						mob.setDeltaMovement(direction.scale(speed));
+					}
+
 				}
 
 			}
+			level.addParticle(ParticleTypes.TOTEM_OF_UNDYING, targetPos.x, targetPos.y, targetPos.z,
+					new Random().nextFloat(-1.0f, 1.0f), new Random().nextFloat(0.5f, 2.0f),
+					new Random().nextFloat(-1.0f, 1.0f));
 
 		}
 	}

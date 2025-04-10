@@ -3,4 +3,14 @@
     <fullyQualifiedTypeName name="net.minecraft.world.item.component.Consumable"/>
     <fullyQualifiedTypeName name="net.minecraft.world.item.component.Consumables"/>
     <fullyQualifiedTypeName name="net.minecraft.world.level.block.SoundType"/>
+    <fullyQualifiedTypeName name="net.minecraft.client.model.ParrotModel.Pose"/>
+    <fullyQualifiedTypeName name="net.minecraft.world.entity.Pose"/>
+    <fullyQualifiedTypeName name="com.noah.belowthenether.items.NetherStarStriker"/>
+    <fullyQualifiedTypeName name="net.minecraft.world.item.Item.Properties"/>
+    <fullyQualifiedTypeName name="net.minecraft.ChatFormatting"/>
+    <fullyQualifiedTypeName name="net.minecraft.core.particles.ParticleOptions"/>
+    <fullyQualifiedTypeName name="net.minecraft.core.particles.ParticleTypes"/>
+    <fullyQualifiedTypeName name="java.util.Random"/>
+    <fullyQualifiedTypeName name="net.minecraft.world.level.block.state.BlockBehaviour.Properties"/>
+    <fullyQualifiedTypeName name="com.noah.belowthenether.Main"/>
 </qualifiedTypeNameHistroy>

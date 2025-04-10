@@ -5,10 +5,18 @@
 		<item key="replaceBarOpen" value="false"/>
 		<item key="selection" value="relea"/>
 		<list key="findhistory">
+			<item value="minecraft"/>
+			<item value="fire"/>
+			<item value="hov"/>
+			<item value="fli"/>
 			<item value="tick"/>
 			<item value="goa"/>
 			<item value="horn"/>
 			<item value="relea"/>
+		</list>
+		<list key="replacehistory">
+			<item value="belowthenether"/>
+			<item value="hellfire"/>
 		</list>
 	</section>
 </section>

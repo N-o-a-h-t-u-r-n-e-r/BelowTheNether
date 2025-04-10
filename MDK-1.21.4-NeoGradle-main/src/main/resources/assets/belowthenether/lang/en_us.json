@@ -1,7 +1,9 @@
 {
 "item.belowthenether.forbidden_fruit": "Forbidden Fruit",
 "item.belowthenether.time_gyro": "Time Gyro",
-"block.belowthenether.pure_obsidian": "Pure Obsidian"
+"item.belowthenether.nether_star_striker": "Nether Star Striker",
+"block.belowthenether.pure_obsidian": "Pure Obsidian",
+"itemGroup.belowthenether": "Below The Nether"
 
 
 }

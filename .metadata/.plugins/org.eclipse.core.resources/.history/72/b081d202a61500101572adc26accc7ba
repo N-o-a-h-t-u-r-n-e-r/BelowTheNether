@@ -1,0 +1,24 @@
+package com.noah.belowthenether.items;
+
+import java.util.List;
+
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.FlintAndSteelItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+
+public class NetherStarStriker extends FlintAndSteelItem{
+
+	public NetherStarStriker(Properties props) {
+		super(props);
+		
+	}
+	
+	@Override
+	public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+		tooltipComponents.add(Component.literal("Hellfire Using The Power Of A Star").withStyle(ChatFormatting.DARK_PURPLE));
+    }
+
+}

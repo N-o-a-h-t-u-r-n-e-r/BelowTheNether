@@ -1,0 +1,12 @@
+package com.noah.belowthenether.items;
+
+import net.minecraft.world.item.FlintAndSteelItem;
+
+public class NetherStarStriker extends FlintAndSteelItem{
+
+	public NetherStarStriker(Properties props) {
+		super(props);
+		
+	}
+
+}
