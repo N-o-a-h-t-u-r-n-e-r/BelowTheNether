@@ -1,0 +1,79 @@
+package com.noah.belowthenether.items;
+
+import java.util.List;
+
+import com.noah.belowthenether.Main;
+import com.noah.belowthenether.blocks.HellfireBlock;
+
+import net.minecraft.ChatFormatting;
+import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.FlintAndSteelItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
+
+public class NetherStarStriker extends FlintAndSteelItem{
+
+	public NetherStarStriker(Properties props) {
+		super(props);
+		
+	}
+	
+	@Override
+	public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+		tooltipComponents.add(Component.literal("Hellfire Starter").withStyle(ChatFormatting.DARK_PURPLE));
+		
+    }
+
+	
+	
+	 @Override
+	    public InteractionResult useOn(UseOnContext context) {
+	        Player player = context.getPlayer();
+	        Level level = context.getLevel();
+	        BlockPos blockpos = context.getClickedPos();
+	        BlockState blockstate = level.getBlockState(blockpos);
+	        BlockState blockstate2 = blockstate.getToolModifiedState(context, net.neoforged.neoforge.common.ItemAbilities.FIRESTARTER_LIGHT, false);
+	        if (blockstate2 == null) {
+	            BlockPos blockpos1 = blockpos.relative(context.getClickedFace());
+	            if (HellfireBlock.canBePlacedAt(level, blockpos1, context.getHorizontalDirection())) {
+	                level.playSound(player, blockpos1, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.4F + 0.8F);
+	                BlockState blockstate1 = Main.HELLFIRE_BLOCK.get().getStateForPlacement((BlockPlaceContext) context);
+	                level.setBlock(blockpos1, blockstate1, 11);
+	                level.gameEvent(player, GameEvent.BLOCK_PLACE, blockpos);
+	                ItemStack itemstack = context.getItemInHand();
+	                if (player instanceof ServerPlayer) {
+	                    CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer)player, blockpos1, itemstack);
+	                    itemstack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(context.getHand()));
+	                }
+
+	                return InteractionResult.SUCCESS;
+	            } else {
+	                return InteractionResult.FAIL;
+	            }
+	        } else {
+	            level.playSound(player, blockpos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.4F + 0.8F);
+	            level.setBlock(blockpos, blockstate2, 11);
+	            level.gameEvent(player, GameEvent.BLOCK_CHANGE, blockpos);
+	            if (player != null) {
+	                context.getItemInHand().hurtAndBreak(1, player, LivingEntity.getSlotForHand(context.getHand()));
+	            }
+
+	            return InteractionResult.SUCCESS;
+	        }
+	    }
+
+}

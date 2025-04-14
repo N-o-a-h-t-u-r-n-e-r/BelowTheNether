@@ -2,5 +2,6 @@
   "parent": "minecraft:block/template_fire_floor",
   "textures": {
     "fire": "belowthenether:block/hellfire_1"
-  }
-}
+		},
+		  "render_type": "minecraft:cutout"
+	}

@@ -1,0 +1,32 @@
+package com.noah.belowthenether.blocks;
+
+import com.noah.belowthenether.Main;
+
+import net.minecraft.world.level.block.FireBlock;
+import net.minecraft.world.level.block.state.BlockState;
+
+public class HellfireBlock extends FireBlock{
+	public HellfireBlock(Properties props) {
+		super(props);
+		
+	
+	}
+
+
+
+
+
+	@Override
+	protected boolean canBurn(BlockState state) {
+	
+		return true;
+	}
+
+
+	
+	 public static BlockState getState() {
+		 return Main.HELLFIRE_BLOCK.get().defaultBlockState();
+	    }
+	
+
+}

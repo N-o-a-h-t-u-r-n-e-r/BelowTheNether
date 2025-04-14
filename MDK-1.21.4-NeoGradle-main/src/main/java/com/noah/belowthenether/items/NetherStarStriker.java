@@ -2,6 +2,7 @@ package com.noah.belowthenether.items;
 
 import java.util.List;
 
+import com.noah.belowthenether.Main;
 import com.noah.belowthenether.blocks.HellfireBlock;
 
 import net.minecraft.ChatFormatting;
@@ -49,7 +50,7 @@ public class NetherStarStriker extends FlintAndSteelItem{
 	            BlockPos blockpos1 = blockpos.relative(context.getClickedFace());
 	            if (HellfireBlock.canBePlacedAt(level, blockpos1, context.getHorizontalDirection())) {
 	                level.playSound(player, blockpos1, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.4F + 0.8F);
-	                BlockState blockstate1 = HellfireBlock.getState(level, blockpos1);
+	                BlockState blockstate1 = ((HellfireBlock)Main.HELLFIRE_BLOCK.get()).getStateForPlacement(level, blockpos1);
 	                level.setBlock(blockpos1, blockstate1, 11);
 	                level.gameEvent(player, GameEvent.BLOCK_PLACE, blockpos);
 	                ItemStack itemstack = context.getItemInHand();

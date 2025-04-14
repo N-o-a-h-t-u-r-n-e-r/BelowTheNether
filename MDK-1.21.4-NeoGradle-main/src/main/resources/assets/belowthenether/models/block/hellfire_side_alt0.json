@@ -2,5 +2,6 @@
   "parent": "minecraft:block/template_fire_side_alt",
   "textures": {
     "fire": "belowthenether:block/hellfire_0"
-  }
-}
+		},
+		  "render_type": "minecraft:cutout"
+	}

@@ -10,6 +10,8 @@ import com.noah.belowthenether.items.NetherStarStriker;
 import com.noah.belowthenether.items.TimeGyro;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -63,7 +65,7 @@ public class Main
 
     //BLOCKS
     public static final DeferredBlock<Block> PURE_OBSIDIAN_BLOCK = BLOCKS.registerSimpleBlock("pure_obsidian", BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).sound(SoundType.STONE));
-    public static final DeferredBlock<Block> HELLFIRE_BLOCK = BLOCKS.registerBlock("hellfire_block", HellfireBlock::new, BlockBehaviour.Properties.of().noCollission().mapColor(MapColor.FIRE).instabreak().sound(SoundType.WOOL).replaceable().lightLevel(state -> 15));
+    public static final DeferredBlock<Block> HELLFIRE_BLOCK = BLOCKS.registerBlock("hellfire", HellfireBlock::new, BlockBehaviour.Properties.of().noCollission().mapColor(MapColor.FIRE).instabreak().sound(SoundType.WOOL).replaceable().lightLevel(state -> 15));
     
     //BLOCK_ITEMS
     public static final DeferredItem<BlockItem> PURE_OBSIDIAN_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("pure_obsidian", PURE_OBSIDIAN_BLOCK);
@@ -158,6 +160,7 @@ public class Main
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
+        	//ItemBlockRenderTypes.setRenderLayer(Main.HELLFIRE_BLOCK.get(), RenderType.cutout());
             // Some client setup code
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());

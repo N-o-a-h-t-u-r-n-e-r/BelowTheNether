@@ -2,9 +2,17 @@
 <section name="Workbench">
 	<item key="hasShownOverlayPopupBefore" value="true"/>
 	<section name="java.lang.Class">
-		<item key="replaceBarOpen" value="false"/>
+		<item key="replaceBarOpen" value="true"/>
 		<item key="selection" value="relea"/>
 		<list key="findhistory">
+			<item value="getState"/>
+			<item value="get"/>
+			<item value="grass"/>
+			<item value="p_221160_"/>
+			<item value="p_221161_"/>
+			<item value="p_221162_"/>
+			<item value="FireBlock"/>
+			<item value="Fire"/>
 			<item value="minecraft"/>
 			<item value="fire"/>
 			<item value="hov"/>
@@ -12,9 +20,11 @@
 			<item value="tick"/>
 			<item value="goa"/>
 			<item value="horn"/>
-			<item value="relea"/>
 		</list>
 		<list key="replacehistory">
+			<item value="state"/>
+			<item value="level"/>
+			<item value="blockPos"/>
 			<item value="belowthenether"/>
 			<item value="hellfire"/>
 		</list>
